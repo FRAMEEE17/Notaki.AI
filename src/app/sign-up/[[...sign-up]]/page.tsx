@@ -1,7 +1,7 @@
 import { SignUp } from "@clerk/nextjs";
 
 export const metadata = {
-  title: "NISAGO - Sign Up",
+  title: "NOTAKI - Sign Up",
 };
 
 export default function SignUpPage() {

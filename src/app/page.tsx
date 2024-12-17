@@ -22,23 +22,23 @@ export default async function Home() {
           src={logoBlack}
           width={100}
           height={100}
-          alt="NISAGO Logo"
+          alt="NOTAKI Logo"
         />
         <Image
           className="hidden dark:block"
           src={logoWhite}
           width={100}
           height={100}
-          alt="NISAGO Logo"
+          alt="NOTAKI Logo"
         />
         <span className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-          NISAGO
+          NOTAKI
         </span>
       </div>
       <p className="max-w-prose text-center">
         <span className="text-gray-500">
-          An intelligent note taking app built with Clerk, Next.js, OpenAI,
-          Pinecone, Prisma, Shadcn UI and more.
+          AI-driven note taking app built with Clerk, Next.js, OpenAI,
+          Pinecone, Prisma, MongoAtlas and more.
         </span>
       </p>
       <div className="flex flex-row gap-3">

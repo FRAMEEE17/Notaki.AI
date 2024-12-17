@@ -20,28 +20,28 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="p-4 shadow ">
-        <div className="m-auto flex max-w-7xl flex-wrap items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-1 ">
+      <div className="p-3 shadow bg-white dark:bg-gray-800">
+        <div className="m-auto flex max-w-8xl flex-wrap items-center justify-between gap-3">
+          <Link href="/" className="flex items-center gap-1">
             <Image
               className="block dark:hidden"
               src={logoBlack}
               width={40}
               height={40}
-              alt="NISAGO Logo"
+              alt="NOTAKI Logo"
             />
             <Image
               className="hidden dark:block"
               src={logoWhite}
               width={40}
               height={40}
-              alt="NISAGO Logo"
+              alt="NOTAKI Logo"
             />
-            <span className="hidden font-bold sm:block ">NISAGO</span>
+            <span className="hidden font-bold sm:block">NOTAKI</span>
           </Link>
           <div className="flex items-center gap-2">
             <UserButton
-              afterSignOutUrl="/"
+              afterSwitchSessionUrl="/"
               appearance={{
                 baseTheme: theme === "dark" ? dark : undefined,
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },

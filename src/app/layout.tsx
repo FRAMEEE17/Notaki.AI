@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+// "use client";
 import React from 'react'
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider, ClerkLoaded } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/app/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NISAGO",
+  title: "NOTAKI",
   description: "Note App powered by AI",
 };
 
@@ -19,13 +20,18 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <ClerkLoaded>
-        <html lang="en">
-          <body className={inter.className}>
-            <ThemeProvider attribute="class">{children}</ThemeProvider>
-          </body>
-        </html>
-      </ClerkLoaded>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider 
+            attribute="class" 
+            defaultTheme="system" 
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

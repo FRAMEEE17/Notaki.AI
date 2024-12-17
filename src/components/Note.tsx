@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { useState } from "react";
+import React, { useState } from "react";
 import AddEditNoteDialog from "./AddEditNoteDialog";
 
 interface NoteProps {
