@@ -1,22 +1,22 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware } from '@clerk/nextjs/server'
 
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)'])
+// Function to check if route is public
+const isPublicRoute = (request: Request) => {
+  const publicPaths = ['/', '/sign-in', '/sign-up']
+  const { pathname } = new URL(request.url)
+  return publicPaths.includes(pathname)
+}
 
-export default clerkMiddleware(async (auth, req) => {
-  const { userId, redirectToSignIn } = await auth()
-
-  if (!userId && isProtectedRoute(req)) {
-    // Add custom logic to run before redirecting
-
-    return redirectToSignIn()
+export default clerkMiddleware(async (auth, request) => {
+  const { userId, redirectToSignIn } = await auth();
+  if (!userId && !isPublicRoute(request)) {
+    return redirectToSignIn();
   }
-})
+});
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
+    '/((?!_next|[^?]*\\.(html?|css|js|json|jpg|png|svg|ico|csv|doc|pdf)).*)',
     '/(api|trpc)(.*)',
   ],
 }

@@ -6,7 +6,7 @@ import { Providers } from "../components/providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NISAGO",
+  title: "NOTAKI",
   description: "Note App powered by AI",
 };
 
