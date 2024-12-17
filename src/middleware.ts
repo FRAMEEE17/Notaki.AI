@@ -1,22 +1,12 @@
 import { clerkMiddleware } from '@clerk/nextjs/server'
 
-// Function to check if route is public
-const isPublicRoute = (request: Request) => {
-  const publicPaths = ['/', '/sign-in', '/sign-up']
-  const { pathname } = new URL(request.url)
-  return publicPaths.includes(pathname)
-}
-
-export default clerkMiddleware(async (auth, request) => {
-  const { userId, redirectToSignIn } = await auth();
-  if (!userId && !isPublicRoute(request)) {
-    return redirectToSignIn();
-  }
-});
+export default clerkMiddleware()
 
 export const config = {
   matcher: [
-    '/((?!_next|[^?]*\\.(html?|css|js|json|jpg|png|svg|ico|csv|doc|pdf)).*)',
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
     '/(api|trpc)(.*)',
   ],
 }
