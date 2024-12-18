@@ -4,15 +4,15 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-// type PageProps = {
-//   params: Promise<{ noteId: string }>;
-// };
+interface Props {
+  params: { noteId: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-export default async function NotePage({ 
-  params,
-}: {
-  params: { noteId: string } & { [key: string]: string | string[] };
-}) {
+export default async function NotePage({
+  params: { noteId },
+  searchParams,
+}: Props) {
   const { userId } = await auth();
 
   if (!userId) {
@@ -21,7 +21,7 @@ export default async function NotePage({
 
   const note = await prisma.note.findUnique({
     where: {
-      id: params.noteId,
+      id: noteId,
       userId,
     },
   });
@@ -29,6 +29,7 @@ export default async function NotePage({
   if (!note) {
     redirect("/notes");
   }
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-4">
