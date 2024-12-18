@@ -4,14 +4,14 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-type PageProps = {
-  params: Promise<{ noteId: string }>;
-};
+// type PageProps = {
+//   params: Promise<{ noteId: string }>;
+// };
 
 export default async function NotePage({ 
-  params 
-}: { 
-  params: { noteId: string } 
+  params,
+}: {
+  params: { noteId: string } & { [key: string]: string | string[] };
 }) {
   const { userId } = await auth();
 
@@ -29,7 +29,6 @@ export default async function NotePage({
   if (!note) {
     redirect("/notes");
   }
-
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-4">
