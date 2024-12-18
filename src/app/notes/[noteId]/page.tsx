@@ -5,14 +5,17 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 interface Props {
-  params: { noteId: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ noteId: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function NotePage({
-  params: { noteId },
+  params,
   searchParams,
 }: Props) {
+  const { noteId } = await params;
+  const searchParamsResolved = await searchParams;
+
   const { userId } = await auth();
 
   if (!userId) {
