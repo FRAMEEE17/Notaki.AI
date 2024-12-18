@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 
 interface Props {
   params: Promise<{ noteId: string }>;
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function NotePage({
@@ -14,6 +14,7 @@ export default async function NotePage({
   searchParams,
 }: Props) {
   const { noteId } = await params;
+  const searchParamsResolved = await searchParams;
 
   const { userId } = await auth();
 
