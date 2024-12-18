@@ -8,9 +8,13 @@ interface NotePageProps {
   params: {
     noteId: string;
   };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default async function NotePage({ params: { noteId } }: NotePageProps) {
+export default async function NotePage({
+  params: { noteId },
+  searchParams,
+}: NotePageProps) {
   const { userId } = await auth();
 
   if (!userId) {
