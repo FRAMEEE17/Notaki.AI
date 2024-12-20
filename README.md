@@ -1,6 +1,6 @@
 # NOTAKI.AI 🤖
 
-An AI-powered note-taking assistant that helps you manage, analyze and answer about your notes intelligently.
+***An AI-powered note-taking assistant that helps you manage, analyze and answer about your notes intelligently.***
 
 ## Demo 🎥
 https://github.com/user-attachments/assets/cfb72aab-4710-4e3f-9a80-b71439e1c7dc
@@ -69,4 +69,4 @@ npm run dev
 ## Optimization
 - Fine-tuning with study notes dataset (maybe various domains) and QA dataset for better response tones and patterns
 
-**Friendly reminder: "streamProtocol: 'text'" is a latest version of AI-SDK React , if you didn't use it, it would fail to parse your output.
+***Friendly reminder: "streamProtocol: 'text'" is a latest version of AI-SDK React , if you didn't use it, it would fail to parse your output.***
