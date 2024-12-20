@@ -37,7 +37,7 @@ export default async function Home() {
       </div>
       <p className="max-w-prose text-center">
         <span className="text-gray-500">
-          AI-driven note taking app built with Clerk, Next.js, OpenAI,
+          AI-driven note taking app built with Clerk, Next.js, Groq,
           Pinecone, Prisma, MongoAtlas and more.
         </span>
       </p>
